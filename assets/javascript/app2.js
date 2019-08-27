@@ -14,7 +14,7 @@ $(document).ready(function(){
         for(var i = 0; i < triviaQuestions.length; i++){
             $('#game').append('<h3>' + triviaQuestions[i].question + '</h3>');
             for(var j =0; j < triviaQuestions[i].choices.length; j++){
-                $('#game').append("<input type= 'radio' name= 'question- "+ i + "' >" + triviaQuestions[i].choices[j]);
+                $('#game').append("<label class='radio-inline'><input type= 'radio' value='" + j + "' name= 'question- "+ i + "' >" + triviaQuestions[i].choices[j] + "</label>");
                 
             };
             
