@@ -12,6 +12,11 @@ input{
 
 h1{
     font-family: 'Petit Formal Script', cursive;
+    font-size: 90px;
+}
+
+.container{
+    margin-top: 100px;
 }
 
 

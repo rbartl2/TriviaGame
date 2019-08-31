@@ -36,7 +36,7 @@ var triviaQuestions = [
         answer: "Gossip is being shared"
     },
     {
-        question: "What was the name of the host of 'Blue's Clues?",
+        question: "What was the name of the host of 'Blue's Clues'?",
         choices: ["Sean", "Shane", "Steve", "Sheldon"],
         answer: "Steve"
     },
@@ -77,18 +77,42 @@ function countdown(){
     };
 }
 
-// function results(){
-
-// }
-
-function submit(){
-    $('#submit-button').on('click', function(){
-        var userChoice = $('input:radio[name="question-i"]:checked').val();
-        userAnswer.push(userChoice);
-        console.log(userAnswer);
-    });
+function results(){
+    $('#game').hide();
     
+
+
+
 }
+
+// function submit(){
+//     $('#submit-button').on('click', function(){
+//         var userChoice = $('input:radio[name="question-1"]:checked').val();
+//         console.log("user choice: " + userChoice)
+//         userAnswer.push(userChoice);
+//         console.log(userAnswer);
+//         results();
+//     });
+    
+// }
+function checkAnswers(){
+    for (var i = 0; i < triviaQuestions.length; i++){
+        if ($('input:radio[name="question-i"]:checked').val() === triviaQuestions[i].answer) {
+            console.log("got one correct");
+        }
+        else {
+            console.log("got one incorrect");
+        }
+    }
+};
+// for loop to all questions
+// if (question i val === queastion[i].answer) {
+    //correct++;
+//}
+//else {
+    //incorrect++
+//}
+
 
 function displayQuestions(){
     for(var i = 0; i < triviaQuestions.length; i++){
@@ -101,7 +125,7 @@ function displayQuestions(){
         
     };
     // Create a button to submit quiz
-    $('#submit-button').append("<button type='button' class='btn btn-primary'>Submit</button>");
+    $('#submit-button').append("<button type='button' class='btn btn-primary submit'>Submit</button>");
 }
 
 
@@ -109,12 +133,12 @@ $('#start-button').on('click', function(){
     $('#start-button').remove();
     displayQuestions();
     intervalID = setInterval(countdown, 1000);
-    submit();
     
-    
+});
 
-    
-
+$(".submit").on("click", function(){
+    event.preventDefault();
+    checkAnswers();
 });
 
 
