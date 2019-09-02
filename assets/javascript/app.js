@@ -4,14 +4,10 @@
 var correct = 0;
 var incorrect = 0;
 var unanswered = 0;
-var userAnswer = [];
 var counter = 60;
 var intervalID;
 
-
-
 // Create an array of objects of all questions, choices, and answers
-
 
 var triviaQuestions = [
     {
@@ -72,30 +68,22 @@ $(document).ready(function(){
 function countdown(){
     counter--;
     $('#clock').html('<h3>Time Remaining: ' + counter + '</h3>');
-    if(counter < 1){
-        clearInterval(setInterval);
-        // results();
+    if(counter === 0){
+        results();
     };
 }
 
 function results(){
     $('#game').hide();
+    $('#submit-button').hide();
+    $('#clock').hide();
     $('#results').html('<h2>Check out your results!</h2>');
     $('#results').append('<h3>Correct Answers: '+ correct+'</h3>');
     $('#results').append('<h3>Incorrect Answers: '+ incorrect+'</h3>');
     $('#results').append('<h3>Unanswered: '+(triviaQuestions.length-(this.incorrect+this.correct))+'</h3>');
+    clearInterval(intervalID);
 }
 
-// function submit(){
-//     $('#submit-button').on('click', function(){
-//         var userChoice = $('input:radio[name="question-1"]:checked').val();
-//         console.log("user choice: " + userChoice)
-//         userAnswer.push(userChoice);
-//         console.log(userAnswer);
-//         results();
-//     });
-    
-// }
 function checkAnswers(){
     $.each($('input[name="question-0"]:checked'), function(){
         if($(this).val()==triviaQuestions[0].answer){
@@ -271,40 +259,13 @@ $('#start-button').on('click', function(){
     $('#start-button').remove();
     displayQuestions();
     intervalID = setInterval(countdown, 1000);
-    
 })
 
 
 $("#submit-button").on('click', function(){
     event.preventDefault();
     results();
-    checkAnswers();
-    
+    checkAnswers();  
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 });
