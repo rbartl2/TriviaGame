@@ -244,7 +244,7 @@ function displayQuestions(){
     for(var i = 0; i < triviaQuestions.length; i++){
         $('#game').append('<h4>' + triviaQuestions[i].question + '</h4>');
         for(var j =0; j < triviaQuestions[i].choices.length; j++){
-            $('#game').append("<label class='radio-inline'><input type= 'radio' name= 'question- "+ i +"' value='" +triviaQuestions[i].choices[j]+"'> " + triviaQuestions[i].choices[j] + "</label>");
+            $('#game').append("<label class='radio-inline'><input type= 'radio' name= 'question-"+ i +"' value='" +triviaQuestions[i].choices[j]+"'> " + triviaQuestions[i].choices[j] + "</label>");
         };
         // Create space between questions
         $('#game').append("<br><br>");
