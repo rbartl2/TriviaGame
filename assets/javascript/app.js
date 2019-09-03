@@ -264,8 +264,8 @@ $('#start-button').on('click', function(){
 
 $("#submit-button").on('click', function(){
     event.preventDefault();
+    checkAnswers();
     results();
-    checkAnswers();  
 })
 
 });
