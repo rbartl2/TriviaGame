@@ -1,3 +1,4 @@
+$(document).ready(function(){
 
 // Create variables
 
@@ -63,8 +64,6 @@ var triviaQuestions = [
 
 ];
 
-$(document).ready(function(){
-
 function countdown(){
     counter--;
     $('#clock').html('<h3>Time Remaining: ' + counter + '</h3>');
@@ -80,7 +79,7 @@ function results(){
     $('#results').html('<h2>Check out your results!</h2>');
     $('#results').append('<h3>Correct Answers: '+ correct+'</h3>');
     $('#results').append('<h3>Incorrect Answers: '+ incorrect+'</h3>');
-    $('#results').append('<h3>Unanswered: '+(triviaQuestions.length-(this.incorrect+this.correct))+'</h3>');
+    $('#results').append('<h3>Unanswered: '+(triviaQuestions.length-(incorrect+correct))+'</h3>');
     clearInterval(intervalID);
 }
 
@@ -176,70 +175,7 @@ function checkAnswers(){
         }
     });
 }
-    // for (i = 0; i < triviaQuestions.length; i++){
-    //     if (triviaQuestions[i].answer == userAnswer[i]){
-    //         correct++;
-    //         console.log("correct" + correct);
-    //     }
-    //     else if (userAnswer[i] === null){
-    //         unanswered++;
-    //     }
-    //     else{
-    //         incorrect++;
-    //     }
-    // }
-    // for (var i =0; i < triviaQuestions.length; i++){
-    //     var correctAnswer = triviaQuestions[i].answer;
-    //     var userAnswer = $('input:radio[name="question-i"]:checked').val();
-    //     if (userAnswer === correctAnswer){
-    //         correct++;
-    //         console.log("you are correct" + correct);
-    //     }
-    //     else if (userAnswer === ""){
-    //             unanswered++;
-    //         }
-    //     else if (userAnswer !== correctAnswer){
-    //         incorrect++;
-    //         }
-    //     }
-    // }
-
-    
-    // var userAnswer1 = $("input[name='question-1']:checked").val();
-    // if (userAnswer1 === undefined){
-    //     unanswered++;
-    // }
-    // else if (userAnswer1 === triviaQuestions[1].answer){
-    //     correct++;
-    //     console.log("got one correct" + correct);
-    // }
-    // else{
-    //     incorrect++
-    // }
-
-    
-    // for (var i = 0; i < triviaQuestions.length; i++){
-    //     if ($('input[name="question-0"]:checked').val() === triviaQuestions[0].answer) {
-    //         correct++;
-    //         console.log("got one correct" + correct);
-    //     }
-    //     else {
-    //         incorrect++
-    //         console.log("got one incorrect" + incorrect);
-    //     }
-    // }
-//     if ($('input[name="question-0"]:checked').val() === triviaQuestions[0].answer) {
-//         correct++;
-//         console.log("got one correct" + correct);
-//     }
-//     else {
-//         incorrect++
-//         console.log("got one incorrect" + incorrect);
-//     }
-// }
-
-
-
+  
 function displayQuestions(){
     for(var i = 0; i < triviaQuestions.length; i++){
         $('#game').append('<h4>' + triviaQuestions[i].question + '</h4>');
@@ -254,9 +190,12 @@ function displayQuestions(){
     $('#submit-button').append("<button type='button' id='submit' class='btn btn-primary submit'>Submit</button>");
 }
 
-
 $('#start-button').on('click', function(){
     $('#start-button').remove();
+    var transBox = $('<div>');
+    transBox.attr("id", "game");
+    transBox.addClass("transBox");
+    $('#spacing').append(transBox);
     displayQuestions();
     intervalID = setInterval(countdown, 1000);
 })

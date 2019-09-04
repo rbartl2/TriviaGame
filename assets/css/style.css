@@ -1,8 +1,14 @@
 body{
     text-align: center;
-    background-image: url(../images/stars.png);
+    background-image: url(../images/pink_background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.transBox{
+    background-color: rgba(199, 138, 148, 0.2);
+    padding: 30px;
+    border-radius: 40px;
 }
 
 input{
@@ -18,5 +24,6 @@ h1{
 .container{
     margin-top: 100px;
 }
+
 
 
